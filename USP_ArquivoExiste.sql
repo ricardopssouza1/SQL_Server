@@ -23,18 +23,17 @@ AS
 * -- SELECT @Retorno                                                        *
 * -- 1 - Verdadeiro / 0 - Falso                                             *
 * -- 																		*
-* -- /* Habilitando o xp_cmdshell */                                        * 
+* --  Habilitando o xp_cmdshell                                             * 
 * -- 																		*
-* -- exec sp_configure 'show advanced options', 1							*
-* -- go																		*
-* -- reconfigure															*
-* -- go																		*
-* -- EXEC sp_configure 'xp_cmdshell', 1										*
-* -- go																		*
-* -- reconfigure															*
-* -- go																		*
-* -- 																		*
-* -- 																		*
+* -- exec sp_configure 'show advanced options', 1                           *
+* -- go                                                                     *
+* -- reconfigure                                                            *
+* -- go                                                                     *
+* -- EXEC sp_configure 'xp_cmdshell', 1                                     *
+* -- go                                                                     *
+* -- reconfigure                                                            *
+* -- go                                                                     *
+* --                                                                        *
 ****************************************************************************/  
 
 BEGIN

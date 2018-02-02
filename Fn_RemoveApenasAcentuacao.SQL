@@ -34,9 +34,9 @@ Begin
       Set @Char = SUBSTRING (@Texto, @Count, 1)    
       Set @Char = Case ASCII(@Char)                    
                 
-				-- =====================
-				-- Vogais
-				-- =====================
+                -- =====================
+                -- Vogais
+                -- =====================
                   When 193 Then 'A' --'Á'  
                   When 225 Then 'a' --'á'  
                   When 226 Then 'a' --'â'  
@@ -49,7 +49,7 @@ Begin
                   When 200 Then 'E' --'È'  
                   When 201 Then 'E' --'É'  
                   When 232 Then 'e' --'é'                  
-				  When 233 Then 'e' --'é'  
+                  When 233 Then 'e' --'é'  
                   When 234 Then 'e' --'e'  
 
                   When 204 Then 'I' --'Ì'  
@@ -75,9 +75,9 @@ Begin
                   When 217 Then 'U' --'Ü'  
                   When 218 Then 'U' --'Ú'  
 
-				-- =====================
-				-- Consoantes
-				-- =====================
+                -- =====================
+                -- Consoantes
+                -- =====================
                   When 199 Then 'C' --'Ç'  
                   When 231 Then 'c' --'ç'  
                   When 209 Then 'N' --'Ñ'  
