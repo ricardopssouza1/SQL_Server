@@ -14,18 +14,18 @@ CREATE PROCEDURE USP_GeraSenhaAleatoria
 *                                                                                       * 
 * Outros Exemplos                                                                       *
 *																						*
-* -- todos os valores entre o código ASCII 48 - 122 excluindo os padrões				*
-* declare @len=8																		*
-* 																						*
-* -- todas as letras minúsculas excluindo o e l											*
-* declare @len=10, @min=97, @range=25, @exclude='ol'									*
-* 																						*
-* --todas as letras maiúsculas, excluindo O												*
-* declare @len=12, @min=65, @range=25, @exclude='O'										*
-* 																						*
-* -- todos os números entre 0 e 9														*
-* declare @len=14, @min=48, @range=9, @exclude=''										*
-*																						*
+* -- todos os valores entre o código ASCII 48 - 122 excluindo os padrões                *
+* declare @len=8                                                                        *
+*                                                                                       *
+* -- todas as letras minúsculas excluindo o e l                                         *
+* declare @len=10, @min=97, @range=25, @exclude='ol'                                    *
+*                                                                                       *
+* --todas as letras maiúsculas, excluindo O	                                            *
+* declare @len=12, @min=65, @range=25, @exclude='O'	                                    *
+*                                                                                       *
+* -- todos os números entre 0 e 9                                                       *
+* declare @len=14, @min=48, @range=9, @exclude=''                                       *
+*                                                                                       *
 *****************************************************************************************/ 
     @output varchar(50) output
 AS
@@ -42,9 +42,7 @@ AS
            set @output += @char
            set @len = @len - 1
        end
-    end
-;
-go
+    end;
 
 
 
