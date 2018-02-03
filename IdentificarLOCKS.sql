@@ -1,5 +1,5 @@
 -- ======================================================= 
---       Buscando nome do campo em todas as tabelas 
+--       Identificando LOCKS no BD 
 -- ======================================================= 
 
 select spid

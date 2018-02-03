@@ -18,9 +18,7 @@ AS
 *  Data      Autor           OS      Descricao                              *
 *                                                                           *
 * Forma de uso                                                              *
-* -- EXEC USP_MoveArquivo 'C:\TEMP\PastaComZip\teste.txt'                   *
-* --                    , 'C:\TEMP\PastaSemZip\teste.txt'                   *
-* --                    , '0'                                               *
+* -- EXEC USP_PesquisaTextoBanco 'João'                                     *
 * --                                                                        *
 * --                                                                        *
 ****************************************************************************/
