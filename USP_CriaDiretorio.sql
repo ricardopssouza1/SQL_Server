@@ -1,9 +1,9 @@
-CREATE PROCEDURE dbo.USP_ApagaArquivo (
-    @Ds_Arquivo VARCHAR(255)
+CREATE PROCEDURE dbo.USP_CriaDiretorio (
+    @Ds_Diretorio VARCHAR(255)
 )
 AS 
 /****************************************************************************
-* Procedure.....: [USP_ArquivoExiste]                  Data: 2017-12-01     *
+* Procedure.....: [USP_CriaDiretorio]                  Data: 2017-12-01     *
 * Criado por....: RSouza                                                    *
 * Objetivo......: Deletar o arquivo no diretório informado                  *
 *---------------------------------------------------------------------------*
@@ -17,7 +17,7 @@ AS
 *  Data      Autor           OS      Descricao                              *
 *                                                                           *
 * Forma de uso                                                              *
-* -- EXEC USP_ApagaArquivo 'C:\TEMP\PastaComZip\teste.txt'                  *
+* -- EXEC USP_CriaDiretorio 'C:\TEMP\PastaComZip2\'                         *
 * -- 																		*
 * --  Habilitando o xp_cmdshell                                             * 
 * -- 																		*
@@ -30,12 +30,12 @@ AS
 * -- reconfigure                                                            *
 * -- go                                                                     *
 * --                                                                        *
-****************************************************************************/ 
+****************************************************************************/
 BEGIN
     
     SET NOCOUNT ON
 
-    DECLARE @Query VARCHAR(8000) = 'del /F /Q "' + @Ds_Arquivo + '"'
+    DECLARE @Query VARCHAR(8000) = 'mkdir "' + @Ds_Diretorio + '"'
 
     DECLARE @Retorno TABLE ( Resultado VARCHAR(MAX) )
 

@@ -4,7 +4,7 @@ CREATE PROCEDURE dbo.USP_ArquivoExiste (
 )
 AS 
 /****************************************************************************
-* Function......: [USP_ArquivoExiste]                  Data: 2017-12-01     *
+* Procedure.....: [USP_ArquivoExiste]                  Data: 2017-12-01     *
 * Criado por....: RSouza                                                    *
 * Objetivo......: Identifica se o arquivo realmente existe                  *
 *---------------------------------------------------------------------------*

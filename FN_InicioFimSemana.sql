@@ -28,7 +28,7 @@ BEGIN
 Declare @MesAno varchar(7), @Dia1 DATE, @Id INT = 1;
 Declare @InicioSemana date, @FinalSemana date;
 
-set @MesAno = LTrim(RTrim(@Mes)) + '/' + LTrim(RTrim@Ano));
+set @MesAno = LTrim(RTrim(@Mes)) + '/' + LTrim(RTrim(@Ano));
 set @Dia1= Convert(date, '1/' + @MesAno, 103);
 
 set @InicioSemana= DateAdd(day, 1 - DatePart(weekday, @Dia1), @Dia1);

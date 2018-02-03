@@ -6,7 +6,7 @@ CREATE PROCEDURE dbo.USP_MoveArquivo (
 AS
 
 /****************************************************************************
-* Function......: [USP_MoveArquivo]                    Data: 2017-12-01     *
+* Procedure.....: [USP_MoveArquivo]                    Data: 2017-12-01     *
 * Criado por....: RSouza                                                    *
 * Objetivo......: Deletar o arquivo no diretório informado                  *
 *---------------------------------------------------------------------------*
