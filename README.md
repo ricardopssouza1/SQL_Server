@@ -3,13 +3,13 @@
 
 **Instruções diversas para o dia dia**
 
-- [ Email_EnvioComAnexo](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Email_EnvioComAnexo.sql)
+- [ Email_EnvioComAnexo] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Email_EnvioComAnexo.sql)
 - [ EncontrarTextoJobs] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/EncontrarTextoJobs.sql)
 - [ EncontrarTextoProcFuncViews] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/EncontrarTextoProcFuncViews.sql)
 - [ IdentificarLOCKS] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IdentificarLOCKS.sql)
 - [ IncluindoZerosEsquerda] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IncluindoZerosEsquerda.sql)
-- [ PesquisaCampos](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaCampos.sql)
-- [ SomarHoras](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SomarHoras.sql)
+- [ PesquisaCampos] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaCampos.sql)
+- [ SomarHoras] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SomarHoras.sql)
 
 
 
