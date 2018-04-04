@@ -11,6 +11,8 @@ Comandos de SQL SERVER para o Dia a Dia
 - [ PesquisaCampos](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaCampos.sql)
 - [ SomarHoras](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SomarHoras.sql)
 
+
+
 **Funções Escalar**
 
 - [ Fn_ValidarFormatoEmail - Valida o formato do e-mail] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Fn_ValidarFormatoEmail.sql)
@@ -36,12 +38,16 @@ Comandos de SQL SERVER para o Dia a Dia
 - [ USP_ListandoArquivo - Listando arquivos no diretório informado ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_ListandoArquivo.sql)
 - [ USP_MoveArquivo - ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_MoveArquivo.sql)
 - [ USP_PesquisaTextoBanco  - Pesquisa em todo banco, em todas as tabelas o texto informado] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_PesquisaTextoBanco.sql)
+<<<<<<< HEAD
 - [ USP_ScriptCreateTable - Procedure para gerar script de criação de tabela ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_ScriptCreateTable.sql)
 - [ USP_Calendario - Monta o calendário do Ano inteiro] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_Calendario.sql)
 - [ USP_GeraSenhaAleatoria - Gerar senhas aleatórias ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_GeraSenhaAleatoria.sql)
 - [  sp_WhoIsActive - Criada por Adam Machanic, com essa procedure é possivel obter vários dados das sessões
      ativas da instância ativa do SQL SERVER ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/sp_WhoIsActive.sql)
 	 
+=======
+- [ USP_Calendario - Monta calendário do Ano informado] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_Calendario.sql)
+>>>>>>> 4ca7c0af93eaf4901445925a1591b838a0e9c36d
 
 
 **Clr**
