@@ -1,11 +1,12 @@
 DECLARE @codcliente int
       , @primeironome VARCHAR(30)
-	  , @sobrenome VARCHAR(60)
-	  , @nomecompleto VARCHAR(90)
+      , @sobrenome VARCHAR(60)
+      , @nomecompleto VARCHAR(90)
+      
 DECLARE @Clientes AS TABLE(CdCliente INT
                          , NmCliente VARCHAR(100)
-			 , NmSobrenome VARCHAR(100)
-			 , NmCompleto VARCHAR(255))
+                         , NmSobrenome VARCHAR(100)
+                         , NmCompleto VARCHAR(255))
 
 
 INSERT INTO @Clientes (CdCliente,NmCliente,NmSobrenome)
