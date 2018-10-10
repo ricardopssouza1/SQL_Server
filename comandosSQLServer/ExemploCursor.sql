@@ -4,8 +4,8 @@ DECLARE @codcliente int
 	  , @nomecompleto VARCHAR(90)
 DECLARE @Clientes AS TABLE(CdCliente INT
                          , NmCliente VARCHAR(100)
-						 , NmSobrenome VARCHAR(100)
-						 , NmCompleto VARCHAR(255))
+			 , NmSobrenome VARCHAR(100)
+			 , NmCompleto VARCHAR(255))
 
 
 INSERT INTO @Clientes (CdCliente,NmCliente,NmSobrenome)
@@ -21,7 +21,7 @@ Values ('1' ,'Jon'   ,'Snow')
      , ('10','Stacy' ,'Santos')
 
 -- ==========================
--- exbindo antes da alteração
+-- exbindo antes da alteraÃ§Ã£o
 -- ==========================
 
 SELECT * FROM @Clientes
@@ -37,7 +37,7 @@ SELECT CdCliente, NmCliente, NmSobrenome FROM @Clientes
 --Abrindo Cursor para leitura
 OPEN cursor1
  
--- Lendo a próxima linha
+-- Lendo a prÃ³xima linha
 FETCH NEXT FROM cursor1 INTO @codcliente, @primeironome, @sobrenome
  
 -- Percorrendo linhas do cursor (enquanto houverem)
@@ -47,7 +47,7 @@ BEGIN
 -- Executando a rotina e manipulando o registro
 UPDATE @Clientes SET NmCompleto = @primeironome + ' ' + @sobrenome WHERE CdCliente = @codcliente
  
--- Lendo a próxima linha
+-- Lendo a prÃ³xima linha
 FETCH NEXT FROM cursor1 INTO @codcliente, @primeironome, @sobrenome
 END
  
@@ -58,7 +58,7 @@ CLOSE cursor1
 DEALLOCATE cursor1
 
 -- ==========================
--- exbindo antes da alteração
+-- exbindo antes da alteraÃ§Ã£o
 -- ==========================
 
 SELECT * FROM @Clientes
