@@ -1,15 +1,15 @@
 # Querys de uso Rápido
-
-
+<br />
+<br />
 **Desativando e Ativando Identity**
-SET IDENTITY_INSERT Tabela Off
-Go
-
-Scripts SQL
-Go
-
-SET IDENTITY_INSERT Tabela On
-
+<p>SET IDENTITY_INSERT Tabela Off<br />
+Go<br />
+<br />
+Scripts SQL<br />
+Go<br />
+<br />
+SET IDENTITY_INSERT Tabela On<br />
+</p>
 **Obtendo o último Identity**
 Select Ident_Current('Tabela')
 
