@@ -26,6 +26,7 @@ Select campo<br />
 From tabela<br />
 Where campo collate Latin_General_CI_AS like ‘%á%’<br />
 </p>
+
 **Informando o Collate em uma coluna e na cláusula Where**
 <p>
 Select Campo collate Latin_General_CI_AS<br />
@@ -38,6 +39,7 @@ Where Campo collate Latin_General_CI_AS like ‘%á%’<br />
 Alter Table Users<br />
 Alter Column [Password] Varchar(12) Collate SQL_Latin1_General_CP1_CS_AS
 </p>
+
 **RowNumber**
 <p>
 select <br />
