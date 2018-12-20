@@ -29,7 +29,7 @@
 - [ IncluindoZerosEsquerda] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IncluindoZerosEsquerda.sql)
 - [ PesquisaCampos] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaCampos.sql)
 - [ SomarHoras] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SomarHoras.sql)
-
+- [ SubtraindoDatas] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SubtraindoData.sql)
 
 **Funções Escalar**
 
