@@ -53,6 +53,7 @@ where database_id < 5;<br />
 <p>
 select SCOPE_IDENTITY() AS scope_identity
 </p>
+
 **Retorna o último valor de identity inserido na tabela**
 <p>
 select @@IDENTITY AS identity
