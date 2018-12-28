@@ -17,7 +17,10 @@
 - [ ExemploSeparandoNomeNomeDoMeioSobrenome] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploSeparandoNomeNomeDoMeioSobrenome.sql)
 - [ ExemploUnPivot] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploUnPivot.sql)
 - [ Exemplo_2_GroupByRollup] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Exemplo_2_GroupByRollup.sql)
+- [ ExemploManipulandoJSON] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploManipulandoJSON.sql)
+- [ ExemploSomandoValorAnterior] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploSomandoValorAnterior.sql)
 - [ Exibindo_Query_com_WITH_ENCRYPTION] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Exibindo%20Query%20com%20WITH%20ENCRYPTION.sql)
+- [ ExibirAlterarNivelCompatibilidadeBD] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExibirAlterarNivelCompatibilidadeBD.sql)
 - [ PesquisaNomesSemelhantes] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaNomesSemelhantes.sql)
 - [ RestringindoTextoNumeros] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/RestringindoTextoNumeros.sql)
 - [ SOUNDEX] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SOUNDEX.sql)
@@ -40,6 +43,7 @@
 - [ Fn_RemoveApenasAcentuacao - Remove acentuação] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Fn_RemoveApenasAcentuacao.SQL)
 - [ Fn_NumeroMonetarioPorExtenso - retorna o numero por extenso ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Fn_NumeroMonetarioPorExtenso.sql)
 - [ Fn_DiaDaSemanaPorExtenso - Exibe a descrição do dia da semana, conforme a data informada] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Fn_DiaDaSemanaPorExtenso.sql)
+- [ FN_APENAS_NUMEROS - Exibe apenas numeros de uma string] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/FN_APENAS_NUMEROS.sql)
 
 
 **Funções tabulares**
