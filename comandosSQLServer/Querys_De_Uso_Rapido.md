@@ -62,7 +62,7 @@ select @@IDENTITY AS identity
 
 **Exemplos abaixo tirados do Blog do Dirceu**
 <p>
-*www.dirceuresende.com/blog/o-que-mudou-no-sql-server-2012-em-relacao-ao-t-sql-na-visao-dos-desenvolvedores/ * 
+www.dirceuresende.com/blog/o-que-mudou-no-sql-server-2012-em-relacao-ao-t-sql-na-visao-dos-desenvolvedores/
 </p>
 
 **FUNÇÃO LÓGICA IIF**
@@ -79,18 +79,18 @@ SELECT (CASE WHEN DATEPART(HOUR, GETDATE()) < 12 THEN 'AM' ELSE 'PM' END) <br />
 
 **ALTERANDO FORMATAÇÃO DE DATA**
 <p>
-SET LANGUAGE 'Portuguese'										<br />
+SET LANGUAGE 'Portuguese' <br />
 SELECT DATENAME(MONTH, GETDATE()), DATENAME(WEEKDAY, GETDATE())	<br />
-SET LANGUAGE 'Brazilian'										<br />
+SET LANGUAGE 'Brazilian' <br />
 SELECT DATENAME(MONTH, GETDATE()), DATENAME(WEEKDAY, GETDATE())	<br />
-SET LANGUAGE 'English'											<br />
+SET LANGUAGE 'English' <br />
 SELECT DATENAME(MONTH, GETDATE()), DATENAME(WEEKDAY, GETDATE()) <br />
 </p>
 
 
 **TIPOS DE LINGUAGEM**
 <p>
-SELECT * FROM syslanguages
+SELECT * FROM syslanguages<br />
 </p>
 
 **RETORNANDO ULTIMO DIA DO MES**
@@ -107,7 +107,7 @@ SELECT * FROM syslanguages
 </p>
 <p>
 /* A PARTIR DO 2012 */
-SELECT EOMONTH(@DATA_ATUAL) AS ULTIMO_DIA_MES  <br />
+SELECT EOMONTH(@DATA_ATUAL) AS ULTIMO_DIA_MES <br />
 </p>
 
 **FUNÇÃO CHOOSE**
@@ -127,18 +127,18 @@ SELECT CHOOSE(5, <br />
     'Dezembro'	 <br />
 )                <br />
 
-SELECT					   <br />
-    CHOOSE(-1, 			   <br />
-        'Domingo',		   <br />
+SELECT <br />
+    CHOOSE(-1, <br />
+        'Domingo',  <br />
         'Segunda-feira',   <br />
         'Terça-feira',	   <br />
         'Quarta-feira',	   <br />
         'Quinta-feira',	   <br />
         'Sexta-feira',	   <br />
-        'Sábado'		   <br />
+        'Sábado'  <br />
     ) AS Nome_Dia_Semana1, <br />
-    CHOOSE(4.9, 		   <br />
-        'Domingo',		   <br />
+    CHOOSE(4.9, <br />
+        'Domingo',  <br />
         'Segunda-feira',   <br />
         'Terça-feira',	   <br />
         'Quarta-feira',	   <br />
@@ -151,73 +151,73 @@ SELECT					   <br />
 **Tratamento de erros e exceções com o THROW**
 /*ATÉ O 2008*/
 <p>
-BEGIN TRY													 <br />
-    SELECT 1/0												 <br />
-END TRY														 <br />
-BEGIN CATCH													 <br />
-    DECLARE 												 <br />
-        @MsgErro VARCHAR(MAX) = ERROR_MESSAGE(),			 <br />
-        @IntState INT = ERROR_STATE(),						 <br />
-        @IntSeverity INT = ERROR_SEVERITY() 				 <br />
+BEGIN TRY <br />
+    SELECT 1/0  <br />
+END TRY  <br />
+BEGIN CATCH  <br />
+    DECLARE <br />
+        @MsgErro VARCHAR(MAX) = ERROR_MESSAGE(),  <br />
+        @IntState INT = ERROR_STATE(), <br />
+        @IntSeverity INT = ERROR_SEVERITY()  <br />
     RAISERROR(@MsgErro, @IntSeverity, @IntState) WITH NOWAIT <br />
  END CATCH
 </p>
 <p>
  
 /*A PARTIR DO 2012*/
-BEGIN TRY	   <br />
+BEGIN TRY <br />
     SELECT 1/0 <br />
-END TRY        <br />
-BEGIN CATCH	<br />
-    THROW	<br />
-END CATCH   <br />
+END TRY  <br />
+BEGIN CATCH <br />
+    THROW <br />
+END CATCH  <br />
 </p>
 
 **Funções de conversão – PARSE, TRY_PARSE, TRY_CONVERT e TRY_CAST**
 <p>
-SELECT CAST('Sábado, 29 de dezembro de 2018' AS DATETIME) AS [Cast] -- Erro
-GO 
-SELECT CONVERT(DATETIME, 'Sábado, 29 de dezembro de 2018') AS [CONVERT] -- Erro
-GO 
-SELECT PARSE('Sábado, 29 de dezembro de 2018' AS DATETIME USING 'pt-BR') AS [PARSE] -- Sucesso (A PARTIR DO 2012)
+SELECT CAST('Sábado, 29 de dezembro de 2018' AS DATETIME) AS [Cast] /*Erro*/ <br />
+GO <br />
+SELECT CONVERT(DATETIME, 'Sábado, 29 de dezembro de 2018') AS [CONVERT] /*Erro*/ <br />
+GO <br />
+SELECT PARSE('Sábado, 29 de dezembro de 2018' AS DATETIME USING 'pt-BR') AS [PARSE] /*Sucesso (A PARTIR DO 2012)*/ <br />
 </p>
 
-/*-- Nesse exemplo, será gerada uma exceção durante a execução do código T-SQL */
-/*-- Msg 9819, Level 16, State 1, Line 1: Error converting string value 'Domingo, 29 de dezembro de 2018' into data type datetime using culture 'pt-BR'.*/
+/*Nesse exemplo, será gerada uma exceção durante a execução do código T-SQL*/
+/*Msg 9819, Level 16, State 1, Line 1: Error converting string value 'Domingo, 29 de dezembro de 2018' into data type datetime using culture 'pt-BR'.*/
 
 <p>
 SELECT PARSE('Domingo, 29 de dezembro de 2018' AS DATETIME USING 'pt-BR') AS [PARSE] <br />
-GO 
- 
-/*Aqui vai apenas retornar NULL*/
+GO<br />
+	
+/*Aqui vai apenas retornar NULL*/<br />
 SELECT TRY_PARSE('Domingo, 29 de dezembro de 2018' AS DATETIME USING 'pt-BR') AS [PARSE] <br />
-GO
+GO<br />
 
-/*Sucesso (2018-12-28 00:00:00.000)*/
+/*Sucesso (2018-12-28 00:00:00.000)*/<br />
 SELECT CAST('2018-12-28' AS DATETIME) <br />
-GO
+GO<br />
 
-/*Erro: The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.*/
+/*Erro: The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.*/<br />
 SELECT CAST('2018-12-99' AS DATETIME) <br />
-GO
+GO<br />
 
-/*NULL*/
-SELECT TRY_CAST('2018-12-99' AS DATETIME) /* (A PARTIR DO 2012) */
-GO
+/*NULL*/<br />
+SELECT TRY_CAST('2018-12-99' AS DATETIME) /* (A PARTIR DO 2012) */<br />
+GO<br />
 
-/*Sucesso (2018-12-28 00:00:00.000)*/
-SELECT CONVERT(DATETIME, '2018-12-28')
-GO 
+/*Sucesso (2018-12-28 00:00:00.000)*/<br />
+SELECT CONVERT(DATETIME, '2018-12-28')<br />
+GO <br />
 
-/*Erro: The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.*/
-SELECT CONVERT(DATETIME, '2018-12-99')
-GO 
+/*Erro: The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.*/<br />
+SELECT CONVERT(DATETIME, '2018-12-99')<br />
+GO <br />
 
-/*NULL*/
-SELECT TRY_CONVERT(DATETIME, '2018-12-99') /* (A PARTIR DO 2012) */
+/*NULL*/<br />
+SELECT TRY_CONVERT(DATETIME, '2018-12-99') /* (A PARTIR DO 2012) */<br />
 </p>
 
-/*Funções de data – DATEFROMPARTS, DATETIME2FROMPARTS, DATETIMEFROMPARTS, DATETIMEOFFSETFROMPARTS, SMALLDATETIMEFROMPARTS e TIMEFROMPARTS*/
+/*Funções de data – DATEFROMPARTS, DATETIME2FROMPARTS, DATETIMEFROMPARTS, DATETIMEOFFSETFROMPARTS, SMALLDATETIMEFROMPARTS e TIMEFROMPARTS*/<br />
 <p>
 IF (OBJECT_ID('tempdb..#Dados') IS NOT NULL) DROP TABLE #Dados <br />
 CREATE TABLE #Dados ( <br />
@@ -237,17 +237,17 @@ VALUES <br />
     (1987, 5, 28, 21, 22, 59, 999, 3, 0), <br />
     (2018, 12, 31, 23, 59, 59, 999, 0, 0) <br />
  
-/*Antes do SQL Server 2012: Utilizando CAST/CONVERT*/
-SELECT
-    CAST(CAST(Ano AS VARCHAR(4)) + '-' + CAST(Mes AS VARCHAR(2)) + '-' + CAST(Dia AS VARCHAR(2)) AS DATE) AS [CAST_DATE]
-FROM
-    #Dados
+/*Antes do SQL Server 2012: Utilizando CAST/CONVERT*/<br />
+SELECT<br />
+    CAST(CAST(Ano AS VARCHAR(4)) + '-' + CAST(Mes AS VARCHAR(2)) + '-' + CAST(Dia AS VARCHAR(2)) AS DATE) AS [CAST_DATE]<br />
+FROM<br />
+    #Dados<br />
     
-/*A partir do SQL Server 2012: DATEFROMPARTS*/
-SELECT 
+/*A partir do SQL Server 2012: DATEFROMPARTS*/<br />
+SELECT <br />
     DATEFROMPARTS (Ano, Mes, Dia) AS [DATEFROMPARTS] <br />
-FROM
-    #Dados
+FROM<br />
+    #Dados<br />
 SELECT <br />
     DATEFROMPARTS (Ano, Mes, Dia) AS [DATEFROMPARTS],<br />
     DATETIME2FROMPARTS (Ano, Mes, Dia, Hora, Minuto, Segundo, Millisegundo, 7) AS [DATETIME2FROMPARTS],<br />
@@ -255,12 +255,12 @@ SELECT <br />
     DATETIMEOFFSETFROMPARTS (Ano, Mes, Dia, Hora, Minuto, Segundo, Millisegundo, Offset_Hora, Offset_Minuto, 7) AS [DATETIMEOFFSETFROMPARTS],<br />
     SMALLDATETIMEFROMPARTS (Ano, Mes, Dia, Hora, Minuto) AS [SMALLDATETIMEFROMPARTS],<br />
     TIMEFROMPARTS (Hora, Minuto, Segundo, Millisegundo, 7) AS [TIMEFROMPARTS] <br />
-FROM
-    #Dados
+FROM<br />
+    #Dados<br />
 </p>
 SET LANGUAGE 'English' <br />
 <p>
-SELECT
+SELECT<br />
     FORMAT(GETDATE(), 'd'), /*Padrão de data abreviada.*/ <br />
     FORMAT(GETDATE(), 'D'), /*Padrão de data completa.*/ <br />
     FORMAT(GETDATE(), 'R'), /*Padrão RFC1123*/ <br />
@@ -268,168 +268,152 @@ SELECT
     FORMAT(GETDATE(), 'T')  /*Padrão de hora completa.*/ <br /> 
 </p>    
 
-SET LANGUAGE 'Brazilian'
+SET LANGUAGE 'Brazilian'<br />
 <p>
-SELECT
+SELECT<br />
     FORMAT(GETDATE(), 'd'), /*Padrão de data abreviada.*/ <br />
     FORMAT(GETDATE(), 'D'), /*Padrão de data completa.*/ <br />
     FORMAT(GETDATE(), 'R'), /*Padrão RFC1123*/ <br />
     FORMAT(GETDATE(), 't'), /*Padrão de hora abreviada.*/ <br />
     FORMAT(GETDATE(), 'T')  /*Padrão de hora completa.*/ <br />
 </p>
-SELECT																<br />
-    /*Formato de data típico do Brasil*/							<br />
-    FORMAT(GETDATE(), 'dd/MM/yyyy'),								<br />
-    /*Formato de data/hora típico dos EUA*/						<br />
-    FORMAT(GETDATE(), 'yyyy-MM-dd HH:mm:ss.fff'),					<br />
-    /*Exibindo a data por extenso*/								<br />
-    FORMAT(GETDATE(), 'dddd, dd \d\e MMMM \d\e yyyy'),				<br />
+SELECT <br />
+    /*Formato de data típico do Brasil*/ <br />
+    FORMAT(GETDATE(), 'dd/MM/yyyy'), <br />
+    /*Formato de data/hora típico dos EUA*/ <br />
+    FORMAT(GETDATE(), 'yyyy-MM-dd HH:mm:ss.fff'), <br />
+    /*Exibindo a data por extenso*/ <br />
+    FORMAT(GETDATE(), 'dddd, dd \d\e MMMM \d\e yyyy'), <br />
     /*Exibindo a data por extenso (forçando o idioma pra PT-BR)*/ <br />
-    FORMAT(GETDATE(), 'dddd, dd \d\e MMMM \d\e yyyy', 'pt-br'),		<br />
+    FORMAT(GETDATE(), 'dddd, dd \d\e MMMM \d\e yyyy', 'pt-br'),	 <br />
     /*Exibindo a data/hora, mas zerando os minutos e segundos*/	<br />
-    FORMAT(GETDATE(), 'dd/MM/yyyy HH:00:00', 'pt-br')				<br />
+    FORMAT(GETDATE(), 'dd/MM/yyyy HH:00:00', 'pt-br') <br />
 </p>
 
+**Função de tratamento de string – FORMAT**
 
+SELECT<br />
+    FORMAT(123456.99, 'C'), /*Formato de moeda padrão*/ <br />
+    FORMAT(-123456.987654321, 'C4'), /*Formato de moeda com 4 casas decimais*/ <br />
+    FORMAT(123456.987654321, 'C2', 'pt-br') /*Formato de moeda forçando a localidade pra Brasil e 2 casas decimais*/ <br />
 
+SELECT<br />
+    FORMAT(123456.99, 'D'), /*Formato de número inteiro com valores numeric (NULL)*/ <br /> 
+    FORMAT(123456, 'D'), /*Formato de número inteiro*/ <br />
+    FORMAT(-123456, 'D4'), /*Formato de número inteiro com valores negativos*/ <br />
+    FORMAT(123456, 'D10', 'pt-br'), /*formato de número inteiro com tamanho fixo em 10 caracteres*/ <br />
+    FORMAT(-123456, 'D10', 'pt-br') /*formato de número inteiro com tamanho fixo em 10 caracteres*/ <br />
 
-
-
-
-
-
-
-/* Função de tratamento de string – FORMAT  */
-
-SELECT
-    FORMAT(123456.99, 'C'), -- Formato de moeda padrão
-    FORMAT(-123456.987654321, 'C4'), -- Formato de moeda com 4 casas decimais
-    FORMAT(123456.987654321, 'C2', 'pt-br') -- Formato de moeda forçando a localidade pra Brasil e 2 casas decimais
-
-SELECT
-    FORMAT(123456.99, 'D'), -- Formato de número inteiro com valores numeric (NULL)
-    FORMAT(123456, 'D'), -- Formato de número inteiro
-    FORMAT(-123456, 'D4'), -- Formato de número inteiro com valores negativos
-    FORMAT(123456, 'D10', 'pt-br'), -- formato de número inteiro com tamanho fixo em 10 caracteres
-    FORMAT(-123456, 'D10', 'pt-br') -- formato de número inteiro com tamanho fixo em 10 caracteres
-
-SELECT
-    FORMAT(123456.99, 'E'), -- Formato de notação científica
-    FORMAT(123456.99, 'E4') -- Formato de notação científica e 4 casas decimais de precisão
-
-SELECT
-    FORMAT(1, 'P'), -- Formato de porcentagem
-    FORMAT(1, 'P2'), -- Formato de porcentagem com 2 casas decimais
-    FORMAT(0.91, 'P'), -- Formato de porcentagem
-    FORMAT(0.005, 'P4') -- Formato de porcentagem com 4 casas decimais
-
-SELECT
-    FORMAT(255, 'X'), -- Formato hexadecimal
-    FORMAT(512, 'X8') -- Formato hexadecimal fixando o retorno em 8 caracteres
-
-SELECT
-    /*Formato de moeda brasileira (manualmente)*/
-    FORMAT(123456789.9, 'R$ ###,###,###,###.00'),
-    /*Utilizando sessão (;) para formatar valores positivos e negativos*/
-    FORMAT(123456789.9, 'R$ ###,###,###,###.00;-R$ ###,###,###,###.00'), 
-    
-    /*Utilizando sessão (;) para formatar valores positivos e negativos*/
-    FORMAT(-123456789.9, 'R$ ###,###,###,###.00;-R$ ###,###,###,###.00'), 
-    /*Utilizando sessão (;) para formatar valores positivos e negativos*/
-    FORMAT(-123456789.9, 'R$ ###,###,###,###.00;(R$ ###,###,###,###.00)'),
-    
-    /*Formatando porcentagem com 2 casas decimais*/
-    FORMAT(0.9975, '#.00%'), 
-    /*Formatando porcentagem com 4 casas decimais*/
-    FORMAT(0.997521654, '#.0000%'),
-    /*Formatando porcentagem com 4 casas decimais*/
-    FORMAT(123456789.997521654, '#.0000%'),
-    
-    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/
-    FORMAT(0.123456789, '#.00%;-#.00%'),
-    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/
-    FORMAT(-0.123456789, '#.00%;-#.00%'),
-    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/
-    FORMAT(-0.123456789, '#.00%;(#.00%)')
+SELECT<br />
+    FORMAT(123456.99, 'E'), /*Formato de notação científica*/ <br />
+    FORMAT(123456.99, 'E4') /*Formato de notação científica e 4 casas decimais de precisão*/ <br />
+SELECT <br />
+    FORMAT(1, 'P'), /*Formato de porcentagem*/ <br />
+    FORMAT(1, 'P2'), /*Formato de porcentagem com 2 casas decimais*/ <br />
+    FORMAT(0.91, 'P'), /*Formato de porcentagem*/ <br />
+    FORMAT(0.005, 'P4') /*Formato de porcentagem com 4 casas decimais*/ <br />
+SELECT <br />
+    FORMAT(255, 'X'), /*Formato hexadecimal*/ <br />
+    FORMAT(512, 'X8') /*Formato hexadecimal fixando o retorno em 8 caracteres*/
+SELECT <br />
+    /*Formato de moeda brasileira (manualmente)*/<br />
+    FORMAT(123456789.9, 'R$ ###,###,###,###.00'),<br />
+    /*Utilizando sessão (;) para formatar valores positivos e negativos*/<br />
+    FORMAT(123456789.9, 'R$ ###,###,###,###.00;-R$ ###,###,###,###.00'), <br />    
+    /*Utilizando sessão (;) para formatar valores positivos e negativos*/ <br />
+    FORMAT(-123456789.9, 'R$ ###,###,###,###.00;-R$ ###,###,###,###.00'),<br /> 
+    /*Utilizando sessão (;) para formatar valores positivos e negativos*/<br />
+    FORMAT(-123456789.9, 'R$ ###,###,###,###.00;(R$ ###,###,###,###.00)'),<br />    
+    /*Formatando porcentagem com 2 casas decimais*/<br />
+    FORMAT(0.9975, '#.00%'), <br />
+    /*Formatando porcentagem com 4 casas decimais*/<br />
+    FORMAT(0.997521654, '#.0000%'),<br />
+    /*Formatando porcentagem com 4 casas decimais*/<br />
+    FORMAT(123456789.997521654, '#.0000%'),<br />    
+    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/ <br />
+    FORMAT(0.123456789, '#.00%;-#.00%'), <br />
+    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/ <br />
+    FORMAT(-0.123456789, '#.00%;-#.00%'), <br />
+    /*Formatando porcentagem com 2 casas decimais e utilizando sessão (;)*/ <br />
+    FORMAT(-0.123456789, '#.00%;(#.00%)')<br />
 
 **Função de tratamento de string – CONCAT**
-IF (OBJECT_ID('tempdb..#Dados') IS NOT NULL) DROP TABLE #Dados
-CREATE TABLE #Dados (
-    Dt_Nascimento DATE,
-    Nome1 VARCHAR(50),
-    Nome2 VARCHAR(50),
-    Idade AS CONVERT(INT, (DATEDIFF(DAY, Dt_Nascimento, GETDATE()) / 365.25))
-)
+IF (OBJECT_ID('tempdb..#Dados') IS NOT NULL) DROP TABLE #Dados <br />
+CREATE TABLE #Dados ( <br />
+    Dt_Nascimento DATE, <br />
+    Nome1 VARCHAR(50), <br />
+    Nome2 VARCHAR(50), <br />
+    Idade AS CONVERT(INT, (DATEDIFF(DAY, Dt_Nascimento, GETDATE()) / 365.25)) <br />
+) <br />
 
-INSERT INTO #Dados
-VALUES
-    ('1999-09-27', 'JOAO', 'BATISTA'),
-    ('1999-09-19', 'MARIA', 'NAZARE'),
-    ('1999-09-19', 'JOSE', NULL)
+INSERT INTO #Dados <br />
+VALUES <br />
+    ('1999-09-27', 'JOAO', 'BATISTA'), <br />
+    ('1999-09-19', 'MARIA', 'NAZARE'), <br />
+    ('1999-09-19', 'JOSE', NULL) <br />
 
+/*Antes do SQL Server 2012: Utilizando CAST/CONVERT*/ <br />
+SELECT <br />
+    Nome1 + ' ' + Nome2 + ' | ' + CAST(Idade AS VARCHAR(3)) + ' | ' + CAST(Dt_Nascimento AS VARCHAR(40)) AS [Antes do SQL Server 2012] <br />
+FROM <br />
+    #Dados <br />
 
-/*Antes do SQL Server 2012: Utilizando CAST/CONVERT*/
-SELECT
-    Nome1 + ' ' + Nome2 + ' | ' + CAST(Idade AS VARCHAR(3)) + ' | ' + CAST(Dt_Nascimento AS VARCHAR(40)) AS [Antes do SQL Server 2012]
-FROM
-    #Dados
-
-/*A partir do SQL Server 2012: Utilizando CONCAT*/
-SELECT
-    CONCAT(Nome1, ' ', Nome2, ' | ', Idade, ' | ', Dt_Nascimento) AS [A partir do SQL Server 2012]
-FROM
-    #Dados
+/*A partir do SQL Server 2012: Utilizando CONCAT*/ <br />
+SELECT <br />
+    CONCAT(Nome1, ' ', Nome2, ' | ', Idade, ' | ', Dt_Nascimento) AS [A partir do SQL Server 2012] <br />
+FROM <br />
+    #Dados <br />
 
 **Funções analíticas – FIRST_VALUE e LAST_VALUE**
-IF (OBJECT_ID('tempdb..#Dados') IS NOT NULL) DROP TABLE #Dados
-CREATE TABLE #Dados (
-    Id INT IDENTITY(1,1),
-    Nome VARCHAR(50),
-    Idade INT
-)
-INSERT INTO #Dados
-VALUES
-    ('Dirceu Resende', 31),
-    ('Joãozinho das Naves', 33),
-    ('Rafael Sudré', 48),
-    ('Potássio', 27),
-    ('Rafaela', 25),
-    ('Jodinei', 39)
+IF (OBJECT_ID('tempdb..#Dados') IS NOT NULL) DROP TABLE #Dados<br />
+CREATE TABLE #Dados ( <br />
+    Id INT IDENTITY(1,1), <br />
+    Nome VARCHAR(50), <br />
+    Idade INT<br />
+) <br />
+INSERT INTO #Dados <br />
+VALUES<br />
+    ('Dirceu Resende', 31),<br />
+    ('Joãozinho das Naves', 33),<br />
+    ('Rafael Sudré', 48),<br />
+    ('Potássio', 27),<br />
+    ('Rafaela', 25),<br />
+    ('Jodinei', 39)<br />
 
 **Antes do SQL Server 2012: MIN/MAX e Subquery**
-SELECT
-    *,
-    (SELECT MIN(Idade) FROM #Dados) AS Menor_Idade,
-    (SELECT MAX(Idade) FROM #Dados) AS Maior_Idade,
-    (SELECT TOP(1) Nome FROM #Dados ORDER BY Idade) AS Nome_Menor_Idade,
-    (SELECT TOP(1) Nome FROM #Dados ORDER BY Idade DESC) AS Nome_Maior_Idade
-FROM
-    #Dados
+SELECT<br />
+    *,<br />
+    (SELECT MIN(Idade) FROM #Dados) AS Menor_Idade,<br />
+    (SELECT MAX(Idade) FROM #Dados) AS Maior_Idade,<br />
+    (SELECT TOP(1) Nome FROM #Dados ORDER BY Idade) AS Nome_Menor_Idade,<br />
+    (SELECT TOP(1) Nome FROM #Dados ORDER BY Idade DESC) AS Nome_Maior_Idade<br />
+FROM<br />
+    #Dados<br />
+    
+/*A partir do SQL Server 2012: FIRST_VALUE*/ <br />
+SELECT <br />
+    *, <br />
+    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade, <br />
+    FIRST_VALUE(Idade) OVER(ORDER BY Idade DESC) AS Maior_Idade, <br />
+    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade, <br />
+    FIRST_VALUE(Nome) OVER(ORDER BY Idade DESC) AS Nome_Maior_Idade <br />
+FROM <br />
+    #Dados <br />
 
--- A partir do SQL Server 2012: FIRST_VALUE
-SELECT
-    *,
-    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade,
-    FIRST_VALUE(Idade) OVER(ORDER BY Idade DESC) AS Maior_Idade,
-    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade,
-    FIRST_VALUE(Nome) OVER(ORDER BY Idade DESC) AS Nome_Maior_Idade
-FROM
-    #Dados
+SELECT <br />
+    *, <br />
+    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade, <br />
+    LAST_VALUE(Idade) OVER(ORDER BY Idade) AS Maior_Idade, <br />
+    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade, <br />
+    LAST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Maior_Idade <br />
+FROM <br />
+    #Dados <br />
 
-SELECT
-    *,
-    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade,
-    LAST_VALUE(Idade) OVER(ORDER BY Idade) AS Maior_Idade,
-    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade,
-    LAST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Maior_Idade
-FROM
-    #Dados
-
-SELECT
-    *,
-    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade,
-    LAST_VALUE(Idade) OVER(ORDER BY Idade ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) AS Maior_Idade,
-    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade,
-    LAST_VALUE(Nome) OVER(ORDER BY Idade ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) AS Nome_Maior_Idade
-FROM
-    #Dados
+SELECT <br /> 
+    *, <br />
+    FIRST_VALUE(Idade) OVER(ORDER BY Idade) AS Menor_Idade, <br />
+    LAST_VALUE(Idade) OVER(ORDER BY Idade ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) AS Maior_Idade, <br />
+    FIRST_VALUE(Nome) OVER(ORDER BY Idade) AS Nome_Menor_Idade, <br />
+    LAST_VALUE(Nome) OVER(ORDER BY Idade ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) AS Nome_Maior_Idade <br />
+FROM <br />
+    #Dados <br />
