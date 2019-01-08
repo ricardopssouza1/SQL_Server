@@ -60,6 +60,16 @@ select @@IDENTITY AS identity
 </p>
 
 
+**Retorna o último valor de identity inserido na tabela**
+<p>
+SET LANGUAGE 'Brazilian'<br />
+SELECT<br />
+DATEPART(WEEKDAY,getdate()) as DIA_DATA,<br />
+DATENAME(WEEKDAY,getdate()) as DIA_DESCRICAO<br />
+SET LANGUAGE 'us_english'<br />
+</p>
+
+
 **Exemplos abaixo tirados do Blog do Dirceu**
 <p>
 www.dirceuresende.com/blog/o-que-mudou-no-sql-server-2012-em-relacao-ao-t-sql-na-visao-dos-desenvolvedores/
