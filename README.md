@@ -24,6 +24,7 @@
 - [ PesquisaNomesSemelhantes] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaNomesSemelhantes.sql)
 - [ RestringindoTextoNumeros] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/RestringindoTextoNumeros.sql)
 - [ SOUNDEX] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SOUNDEX.sql)
+- [ RemoverZerosEsquerdaOuDireita] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/RemoverZerosEsquerdaOuDireita.sql)
 - [ SelectComRowConstructor] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SelectComRowConstructor.sql)
 - [ SequenciaFibonacci] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/SequenciaFibonacci.sql)
 - [ TrabalhandoComDatas] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/TrabalhandoComDatas.sql)
