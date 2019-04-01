@@ -449,5 +449,20 @@ SELECT REVERSE(SUBSTRING(REVERSE(@TEXTO),PATINDEX('%[a-z,1-9]%',REVERSE(@TEXTO))
 DECLARE @TEXTO AS VARCHAR(30) = '8JQJP000000K0000'<br />
 SELECT REVERSE(SUBSTRING(REVERSE(@TEXTO),PATINDEX('%[a-z,1-9]%',REVERSE(@TEXTO)),LEN(@TEXTO)))<br />
 
+** Compressão de texto **
 
+/*OBS: Esta função compacta a expressão de entrada usando o algoritmo GZIP. A função retorna uma matriz de bytes do tipo varbinary(max)  */ <br />
+
+DECLARE @TEXTO VARCHAR(MAX), <br />
+       @TEXTO_MENOR VARCHAR(MAX), <br />
+	   @TEXTO3 VARCHAR(MAX) <br />
+SET @TEXTO =LOWER ('Lorem ipsum dolor sit amet, consectetur adipiscing elit.'); <br />
+
+/* comprimindo texto (retorno - varbinary ) */ <br /> 
+SET @TEXTO_MENOR =  COMPRESS(@TEXTO) <br />
+SELECT (@TEXTO_MENOR); <br />
+
+/* descomprimindo texto */ <br />
+SET @TEXTO3 =  DECOMPRESS(convert(VARBINARY(max),@TEXTO_MENOR)) <br />
+SELECT(@TEXTO3) <br />
 
