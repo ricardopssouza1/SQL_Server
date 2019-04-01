@@ -462,7 +462,7 @@ SET @TEXTO =LOWER ('Lorem ipsum dolor sit amet, consectetur adipiscing elit.'); 
 SET @TEXTO_MENOR =  COMPRESS(@TEXTO) <br />
 SELECT (@TEXTO_MENOR); <br />
 
-/* descomprimindo texto */ <br />
+/* descomprimindo texto (entrada - varbinary )*/ <br />
 SET @TEXTO3 =  DECOMPRESS(convert(VARBINARY(max),@TEXTO_MENOR)) <br />
 SELECT(@TEXTO3) <br />
 
