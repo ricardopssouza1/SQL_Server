@@ -449,7 +449,7 @@ SELECT REVERSE(SUBSTRING(REVERSE(@TEXTO),PATINDEX('%[a-z,1-9]%',REVERSE(@TEXTO))
 DECLARE @TEXTO AS VARCHAR(30) = '8JQJP000000K0000'<br />
 SELECT REVERSE(SUBSTRING(REVERSE(@TEXTO),PATINDEX('%[a-z,1-9]%',REVERSE(@TEXTO)),LEN(@TEXTO)))<br />
 
-** Compressão de texto **
+**Compressão de texto**
 
 /*OBS: Esta função compacta a expressão de entrada usando o algoritmo GZIP. A função retorna uma matriz de bytes do tipo varbinary(max)  */ <br />
 
