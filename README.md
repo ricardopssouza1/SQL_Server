@@ -19,6 +19,7 @@
 - [ Exemplo_2_GroupByRollup] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Exemplo_2_GroupByRollup.sql)
 - [ ExemploManipulandoJSON] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploManipulandoJSON.sql)
 - [ ExemploSomandoValorAnterior] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploSomandoValorAnterior.sql)
+- [ ExemploReverse] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExemploReverse.sql)
 - [ Exibindo_Query_com_WITH_ENCRYPTION] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Exibindo%20Query%20com%20WITH%20ENCRYPTION.sql)
 - [ ExibirAlterarNivelCompatibilidadeBD] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ExibirAlterarNivelCompatibilidadeBD.sql)
 - [ PesquisaNomesSemelhantes] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/PesquisaNomesSemelhantes.sql)
