@@ -472,15 +472,15 @@ DECLARE @DATA DATETIME <br />
 SET @DATA = GETDATE() <br />
 SELECT DATEADD(DAY,-(DATEPART(WEEKDAY,@DATA)-2),@DATA) <br />
 
-**cria uma etapa de trabalho que usa TSQL **
+**Cria uma JOB via TSQL**
 
-USE msdb;  
-GO  
-EXEC sp_add_jobstep  
-    @job_name = N'Vendas da Semana',  
-    @step_name = N'Set database para apenas leitura',  
-    @subsystem = N'TSQL',  
-    @command = N'ALTER DATABASE SALES SET READ_ONLY',   
-    @retry_attempts = 5,  
-    @retry_interval = 5 ;  
-GO  
+USE msdb; <br />  
+GO <br />  
+EXEC sp_add_jobstep<br />  
+    @job_name = N'Vendas da Semana', <br />  
+    @step_name = N'Set database para apenas leitura', <br /> 
+    @subsystem = N'TSQL',<br />  
+    @command = N'ALTER DATABASE SALES SET READ_ONLY',<br />   
+    @retry_attempts = 5,<br />  
+    @retry_interval = 5 ;<br />  
+GO<br />  
