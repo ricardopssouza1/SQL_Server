@@ -493,3 +493,24 @@ SCOPE_IDENTITY e @@IDENTITY retornam o último valor de identidade gerado em qua
  - @@IDENTITY não está limitado a um escopo específico <br />
 
 
+**Liberar "OLE Automation" sem pertencer à server role sysadmin**
+
+sp_configure 'Advanced Options', 1 <br />
+GO <br />
+RECONFIGURE <br />
+GO <br />
+sp_configure 'Ole Automation Procedures', 1 <br />
+GO <br />
+RECONFIGURE <br />
+GO <br />
+
+USE [master] <br />
+GO <br />
+GRANT EXECUTE ON sys.sp_OACreate       TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OADestroy      TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OAGetErrorInfo TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OAGetProperty  TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OAMethod       TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OASetProperty  TO [UserSQLServer] <br />
+GRANT EXECUTE ON sys.sp_OAStop         TO [UserSQLServer] <br />
+
