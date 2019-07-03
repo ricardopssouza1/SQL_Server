@@ -484,3 +484,12 @@ EXEC sp_add_jobstep<br />
     @retry_attempts = 5,<br />
     @retry_interval = 5 ;<br />
 GO<br />
+
+**Diferenças entre SCOPE_IDENTITY, IDENT_CURRENT, e @@IDENTITY**
+
+IDENT_CURRENT retorna o valor gerado para uma tabela específica em qualquer sessão e escopo <br />
+SCOPE_IDENTITY e @@IDENTITY retornam o último valor de identidade gerado em qualquer tabela da sessão atual. <br />
+ - SCOPE_IDENTITY só retornará valores inseridos no escopo atual; <br />
+ - @@IDENTITY não está limitado a um escopo específico <br />
+
+
