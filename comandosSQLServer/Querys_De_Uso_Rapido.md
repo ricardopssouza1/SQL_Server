@@ -97,6 +97,15 @@ SET LANGUAGE 'English' <br />
 SELECT DATENAME(MONTH, GETDATE()), DATENAME(WEEKDAY, GETDATE()) <br />
 </p>
 
+**Completar com zeros a esquera e direa**
+
+declare @campo varchar(20) = '5'<br />
+<br />
+/*preencher com zeros a direta*/
+SELECT RIGHT(REPLICATE('0',14) + @campo,14)
+
+/*preencher com zeros a esquerda*/
+SELECT RTRIM(@campo) + LTRIM(REPLICATE('0', 14 - LEN(@campo)))<br />
 
 **TIPOS DE LINGUAGEM**
 <p>
