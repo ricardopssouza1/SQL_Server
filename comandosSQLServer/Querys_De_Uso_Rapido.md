@@ -523,3 +523,59 @@ GRANT EXECUTE ON sys.sp_OAMethod       TO [UserSQLServer] <br />
 GRANT EXECUTE ON sys.sp_OASetProperty  TO [UserSQLServer] <br />
 GRANT EXECUTE ON sys.sp_OAStop         TO [UserSQLServer] <br />
 
+
+**Concatena várias linhas em uma string**
+
+Declare @Usuarios as table(Id Int Identity(1,1), Nome Varchar(100), Idade int) <br />
+Declare @Lista Varchar(255) <br />
+Set @Lista = '' <br />
+
+Insert into @Usuarios Values ('João', 20) <br />
+Insert into @Usuarios Values ('Maria', 22) <br />
+Insert into @Usuarios Values ('Mario', 23) <br />
+Insert into @Usuarios Values ('Luis', 23) <br />
+
+/*--//Seleciona cada registro e concatena com a variável*/ <br />
+Select @Lista = @Lista + Nome + '; ' <br />
+  From @Usuarios <br />
+
+/*--// Retira o último caracterer (;)*/ <br />
+If @Lista <> '' <br />
+Begin <br />
+   Set @Lista = SUBSTRING(@Lista, 1, len(@Lista)-1) <br />
+End <br />
+
+Select @Lista as Usuarios <br />
+
+
+
+**Deletar linhas repetidas**
+
+if object_id('tempdb..#Funcionarios','u') is not null <br /> 
+Begin <br />
+Drop table #Funcionarios <br />
+End <br />
+create table #Funcionarios (Id Int identity(1,1), Nome Varchar(100), Cargo Varchar(100)) <br />
+go <br />
+/*-- Insere dados duplicados na tabela (Ids 1 e 4)*/ <br />
+insert into #Funcionarios values ('João', 'Dba') <br />
+insert into #Funcionarios values ('Maria', '.NET') <br />
+insert into #Funcionarios values ('Roberto', 'PHP' )<br />
+insert into #Funcionarios values ('João', 'DBA') <br /> 
+insert into #Funcionarios values ('José', 'Desenvolvedor') <br /> 
+go <br /> 
+/*-- Lista os registros repetidos considerando as colunas Nome e Departamento*/ <br /> 
+With tblTemp ( RowNumber, Id ,Nome ,Cargo) <br /> 
+as <br /> 
+( <br /> 
+Select ROW_NUMBER() Over(PARTITION BY Nome, Cargo ORDER BY Nome) As RowNumber,*  <br /> 
+  FROM #Funcionarios <br /> 
+) <br /> 
+/*-- Apaga as linhas repetidas, no caso "RowNumber" maior que 1*/ <br /> 
+delete a <br /> 
+  from #Funcionarios a <br /> 
+  join tblTemp b on a.id = b.Id <br />   
+  Where RowNumber > 1 <br /> 
+
+/*-- resultado final*/ <br /> 
+select * from #Funcionarios <br /> 
