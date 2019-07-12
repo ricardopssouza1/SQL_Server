@@ -557,14 +557,13 @@ Drop table #Funcionarios <br />
 End <br />
 create table #Funcionarios (Id Int identity(1,1), Nome Varchar(100), Cargo Varchar(100)) <br />
 go <br />
-/*-- Insere dados duplicados na tabela (Ids 1 e 4)*/ <br />
 insert into #Funcionarios values ('João', 'Dba') <br />
 insert into #Funcionarios values ('Maria', '.NET') <br />
 insert into #Funcionarios values ('Roberto', 'PHP' )<br />
 insert into #Funcionarios values ('João', 'DBA') <br /> 
 insert into #Funcionarios values ('José', 'Desenvolvedor') <br /> 
 go <br /> 
-/*-- Lista os registros repetidos considerando as colunas Nome e Departamento*/ <br /> 
+/*-- Lista os registros repetidos*/ <br /> 
 With tblTemp ( RowNumber, Id ,Nome ,Cargo) <br /> 
 as <br /> 
 ( <br /> 
