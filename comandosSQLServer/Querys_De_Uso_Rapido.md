@@ -535,11 +535,11 @@ Insert into @Usuarios Values ('Maria', 22) <br />
 Insert into @Usuarios Values ('Mario', 23) <br />
 Insert into @Usuarios Values ('Luis', 23) <br />
 
-/*--//Seleciona cada registro e concatena com a variável*/ <br />
+*--Seleciona cada registro e concatena com a variável* <br />
 Select @Lista = @Lista + Nome + '; ' <br />
   From @Usuarios <br />
 
-/*--// Retira o último caracterer (;)*/ <br />
+*--Retira o último caracterer (;)* <br />
 If @Lista <> '' <br />
 Begin <br />
    Set @Lista = SUBSTRING(@Lista, 1, len(@Lista)-1) <br />
@@ -563,18 +563,18 @@ insert into #Funcionarios values ('Roberto', 'PHP' )<br />
 insert into #Funcionarios values ('João', 'DBA') <br /> 
 insert into #Funcionarios values ('José', 'Desenvolvedor') <br /> 
 go <br /> 
-/*-- Lista os registros repetidos*/ <br /> 
+*-- Lista os registros repetidos* <br /> 
 With tblTemp ( RowNumber, Id ,Nome ,Cargo) <br /> 
 as <br /> 
 ( <br /> 
 Select ROW_NUMBER() Over(PARTITION BY Nome, Cargo ORDER BY Nome) As RowNumber,*  <br /> 
   FROM #Funcionarios <br /> 
 ) <br /> 
-/*-- Apaga as linhas repetidas, no caso "RowNumber" maior que 1*/ <br /> 
+*-- Apaga as linhas repetidas, no caso "RowNumber" maior que 1* <br /> 
 delete a <br /> 
   from #Funcionarios a <br /> 
   join tblTemp b on a.id = b.Id <br />   
   Where RowNumber > 1 <br /> 
 
-/*-- resultado final*/ <br /> 
+*-- resultado final* <br /> 
 select * from #Funcionarios <br /> 
