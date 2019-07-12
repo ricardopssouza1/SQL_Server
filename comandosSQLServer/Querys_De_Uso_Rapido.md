@@ -573,8 +573,8 @@ Select ROW_NUMBER() Over(PARTITION BY Nome, Cargo ORDER BY Nome) As RowNumber,* 
 *-- Apaga as linhas repetidas, no caso "RowNumber" maior que 1* <br /> 
 delete a <br /> 
   from #Funcionarios a <br /> 
-  join tblTemp b on a.id = b.Id <br />   
-  Where RowNumber > 1 <br /> 
+  join tblTemp b on a.id = b.Id <br />
+ Where RowNumber > 1 <br /> 
 
 *-- resultado final* <br /> 
 select * from #Funcionarios <br /> 
