@@ -68,7 +68,8 @@
 - [  sp_WhoIsActive - Criada por Adam Machanic, com essa procedure é possivel obter vários dados das sessões
      ativas da instância ativa do SQL SERVER ] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/sp_WhoIsActive.sql)
 - [ stpGera_Feriados - Monta tabela de Feriados] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/stpGera_Feriados.sql)	 
-	 
+- [ USP_PesquisaObjetos - Pesquisa em todos os objetos o texto informado] (https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/USP_PesquisaObjetos.sql)
+
 
 **Clr**
 
