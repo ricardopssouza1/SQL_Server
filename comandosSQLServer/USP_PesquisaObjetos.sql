@@ -1,9 +1,9 @@
-CREATE PROCEDURE [dbo].[SPpesquisaObjetos]     
+CREATE PROCEDURE [dbo].[USP_PesquisaObjetos]     
 @nm_pesquisado VARCHAR(255)    
     
 AS    
 
-/* REMOVE POSSIVEIS ESPAÇOS EM BRANCO */
+/* REMOVE POSSIVEIS ESPAÃ‡OS EM BRANCO */
 SET @nm_pesquisado = LTRIM(RTRIM(@nm_pesquisado))
     
 /* 'TABELAS' */
