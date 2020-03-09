@@ -581,6 +581,7 @@ select * from #Funcionarios <br />
 
 
 
-**Retornar data por extenso**
-SET LANGUAGE Brazilian
-SELECT DATENAME(DAY,GETDATE()) + ' de '+DATENAME(MONTH,GETDATE()) + ' de '+ DATENAME(YEAR,GETDATE()) HOJE
+**Retornar data por extenso** <br /> 
+
+SET LANGUAGE Brazilian <br /> 
+SELECT DATENAME(DAY,GETDATE()) + ' de '+DATENAME(MONTH,GETDATE()) + ' de '+ DATENAME(YEAR,GETDATE()) HOJE <br /> 
