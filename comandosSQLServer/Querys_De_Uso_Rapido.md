@@ -578,3 +578,9 @@ delete a <br />
 
 *-- resultado final* <br /> 
 select * from #Funcionarios <br /> 
+
+
+
+**Retornar data por extenso**
+SET LANGUAGE Brazilian
+SELECT DATENAME(DAY,GETDATE()) + ' de '+DATENAME(MONTH,GETDATE()) + ' de '+ DATENAME(YEAR,GETDATE()) HOJE
