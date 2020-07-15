@@ -1,4 +1,4 @@
-/* Comandos b·sicos em v·rios SGBDs */
+/*Comandos b√°sicos em v√°rios SGBDs*/
 
 
 /* SELECT TOP */
@@ -26,7 +26,7 @@ MySQL      - SELECT DATE_ADD(CURDATE(),interval 3 day);
 Oracle     - SELECT sysdate + interval '3' FROM DUAL;
 PostgreSQL - SELECT current_date + interval '3 days';
 
-/* DiferenÁa entre Datas */
+/* Diferen√ßa entre Datas */
 SQL Server - SELECT DATEDIFF(DAY,'2020-01-01',getdate())
 MySQL      - SELECT datediff(curdate(),'2020-01-01');
 Oracle     - SELECT sysdate - to_date ('2020-01-01','yyyy-mm-dd') from dual;
