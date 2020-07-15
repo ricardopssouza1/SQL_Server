@@ -3,6 +3,7 @@
 
 **Instruções diversas para o dia dia**
 
+- [ ComandosBasicosSGBD](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ComandosBasicosSGBD.md)
 - [ Email_EnvioComAnexo](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Email_EnvioComAnexo.sql)
 - [ EncontrarTextoJobs](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/EncontrarTextoJobs.sql)
 - [ EncontrarTextoProcFuncViews](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/EncontrarTextoProcFuncViews.sql)
