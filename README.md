@@ -81,4 +81,17 @@
 - [Querys de uso Rápido](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Querys_De_Uso_Rapido.md)
 
 
-**Rotinas de DBA**
+**Rotinas de Manutenção para DBA**
+- [IdentificarFragmentacaoDeIndices](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IdentificarFragmentacaoDeIndices.sql)
+- [IndiceClusterizado](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceClusterizado.sql)
+- [IndiceClusterizado2](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceClusterizado2.sql)
+- [IndiceNaoClusterizado](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceNaoClusterizado.sql)
+- [IndiceNaoClusterizado2](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceNaoClusterizado2.sql)
+- [IndiceSpatial](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceSpatial.sql)
+- [IndiceXMLPrimario](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceXMLPrimario.sql)
+- [IndiceXMLSecundario](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/IndiceXMLSecundario.sql)
+- [ListarIndicesNaoUtilizados](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ListarIncidesNaoUtilizados.sql)
+- [ListarIndicesFaltantes](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ListarIndicesFaltantes.sql)
+- [ListarTodosOsIncides](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ListarTodosOsIncides.sql)
+- [ManutencaoDosIndices](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ManutencaoDosIndices.sql)
+- [ReorganizeOsIndices](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/ReorganizeOsIndices.sql)
