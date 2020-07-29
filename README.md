@@ -79,3 +79,6 @@
 
 **Querys de uso Rápido**
 - [Querys de uso Rápido](https://github.com/ricardopssouza1/SQL_Server/blob/001/comandosSQLServer/Querys_De_Uso_Rapido.md)
+
+
+**Rotinas de DBA**
