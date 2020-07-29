@@ -1,0 +1,1 @@
+CREATE PRIMARY XML INDEX idx_xCol_MinhaTabela on MinhaTabela (xCol)
