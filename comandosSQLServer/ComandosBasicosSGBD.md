@@ -42,3 +42,9 @@
 - MySQL      - SELECT LPAD(123,14,'0')
 - Oracle     - SELECT LPAD(123,14,0) FROM dual; 
 - PostgreSQL - SELECT RIGHT(repeat('0',14) || '123', 14)
+
+**Parte do texto**
+- SQL Server - SELECT SUBSTRING('Substring',1,3)
+- MySQL      - SELECT SUBSTRING('Substring', 1, 3) OU SUBSTRING('Substring' FROM 3)
+- Oracle     - SELECT SUBSTR( 'Substring', 1, 3 ) FROM dual;
+- PostgreSQL - SELECT SUBSTRING ('Substring', 1, 3);
