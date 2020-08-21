@@ -36,3 +36,9 @@
 - MySQL      - SELECT extract(month from curdate());
 - Oracle     - SELECT extract(month FROM sysdate) FROM dual;
 - PostgreSQL - SELECT date_part('month',current_date);
+
+**Zeros a esquerda**
+- SQL Server - SELECT RIGHT(REPLICATE('0',14) + '123',14)
+- MySQL      - SELECT LPAD(123,14,'0')
+- Oracle     - SELECT LPAD(123,14,0) FROM dual; 
+- PostgreSQL - SELECT RIGHT(repeat('0',14) || '123', 14)
