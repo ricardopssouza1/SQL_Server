@@ -585,3 +585,86 @@ select * from #Funcionarios <br />
 
 SET LANGUAGE Brazilian <br /> 
 SELECT DATENAME(DAY,GETDATE()) + ' de '+DATENAME(MONTH,GETDATE()) + ' de '+ DATENAME(YEAR,GETDATE()) AS HOJE <br /> 
+
+
+
+**Jobs em Execução** <br /> 
+SELECT j.name AS Nm_JOB 
+	 , CONVERT(VARCHAR(16), start_execution_date, 120) AS Dt_Start
+	 , RTRIM(CONVERT(CHAR(17), DATEDIFF(SECOND, CONVERT(DATETIME, start_execution_date), GETDATE()) / 86400)) + ' Dia(s) ' + RIGHT('00' + RTRIM(CONVERT(CHAR(7), DATEDIFF(SECOND, CONVERT(DATETIME, start_execution_date), GETDATE()) % 86400 / 3600)), 2) + ' Hora(s) ' 
+	                                                                                                                       + RIGHT('00' + RTRIM(CONVERT(CHAR(7), DATEDIFF(SECOND, CONVERT(DATETIME, start_execution_date), GETDATE()) % 86400 % 3600 / 60)), 2) + ' Minuto(s) ' AS Duration
+	 , js.step_name AS Nm_Step
+  FROM msdb.dbo.sysjobactivity ja
+  LEFT JOIN msdb.dbo.sysjobhistory jh ON ja.job_history_id = jh.instance_id
+  JOIN msdb.dbo.sysjobs j ON ja.job_id = j.job_id
+  JOIN msdb.dbo.sysjobsteps js ON ja.job_id = js.job_id
+	                          AND ISNULL(ja.last_executed_step_id, 0) + 1 = js.step_id
+WHERE ja.session_id = (
+		               SELECT TOP 1 session_id
+		               FROM msdb.dbo.syssessions
+		               ORDER BY agent_start_date DESC
+		               )
+	AND start_execution_date IS NOT NULL
+	AND stop_execution_date IS NULL
+	AND DATEDIFF(minute, start_execution_date, GETDATE()) >= 1 <br />
+	
+	
+**Jobs com Falha** <br /> 	
+
+DECLARE @Result_History_Jobs AS TABLE (
+	    Cod INT identity(1, 1)
+	  , Instance_Id NUMERIC(15)
+	  , Job_Id VARCHAR(max)
+	  , Job_Name VARCHAR(max)
+	  , Step_Id INT
+	  , Step_Name VARCHAR(max)
+	  , Sql_Message_Id NUMERIC(15)
+	  , Sql_Severity NUMERIC(15)
+	  , SQl_Message VARCHAR(max)
+	  , Run_Status NUMERIC(15)
+	  , Run_Date VARCHAR(20)
+	  , Run_Time VARCHAR(20)
+	  , Run_Duration NUMERIC(15)
+	  , Operator_Emailed VARCHAR(max)
+	  , Operator_NetSent VARCHAR(max)
+	  , Operator_Paged VARCHAR(max)
+	  , Retries_Attempted NUMERIC(15)
+	  , Nm_Server VARCHAR(max) )
+DECLARE @hoje VARCHAR(8)
+DECLARE @ontem VARCHAR(8)
+
+SET @ontem = convert(VARCHAR(8), (dateadd(day, - 1, getdate())), 112)
+SET @hoje = convert(VARCHAR(8), getdate(), 112)
+
+INSERT INTO @Result_History_Jobs
+  EXEC Msdb.dbo.SP_HELP_JOBHISTORY @mode = 'FULL'
+	 , @start_run_date = @hoje
+SELECT Job_Name
+	 , CASE 
+	 	WHEN Run_Status = 0
+	 		THEN 'Failed'
+	 	WHEN Run_Status = 1
+	 		THEN 'Succeeded'
+	 	WHEN Run_Status = 2
+	 		THEN 'Retry (step only)'
+	 	WHEN Run_Status = 3
+	 		THEN 'Canceled'
+	 	WHEN Run_Status = 4
+	 		THEN 'In-progress message'
+	 	WHEN Run_Status = 5
+	 		THEN 'Unknown'
+	 	END STATUS
+	 , cast(Run_Date + ' ' + right('00' + substring(Run_time, (len(Run_time) - 5), 2), 2) + ':' + 
+	                         right('00' + substring(Run_time, (len(Run_time) - 3), 2), 2) + ':' + 
+							 right('00' + substring(Run_time, (len(Run_time) - 1), 2), 2) AS VARCHAR) Dt_Execucao
+	 , right('00' + substring(cast(Run_Duration AS VARCHAR), (len(Run_Duration) - 5), 2), 2) + ':' + 
+	   right('00' + substring(cast(Run_Duration AS VARCHAR), (len(Run_Duration) - 3), 2), 2) + ':' + 
+	   right('00' + substring(cast(Run_Duration AS VARCHAR), (len(Run_Duration) - 1), 2), 2) Run_Duration
+	 , SQL_Message
+FROM @Result_History_Jobs
+WHERE cast(Run_Date + ' ' + right('00' + substring(Run_time, (len(Run_time) - 5), 2), 2) + ':' + 
+                            right('00' + substring(Run_time, (len(Run_time) - 3), 2), 2) + ':' + 
+                            right('00' + substring(Run_time, (len(Run_time) - 1), 2), 2) AS DATETIME) >= @ontem + ' 08:00' --dia anterior no horário
+	AND Step_Id = 0
+	AND Run_Status <> 1
+ORDER BY Dt_Execucao
