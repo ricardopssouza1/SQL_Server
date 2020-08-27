@@ -48,3 +48,9 @@
 - MySQL      - SELECT SUBSTRING('Substring', 1, 3) OU SELECT SUBSTRING('Substring' FROM 3)
 - Oracle     - SELECT SUBSTR( 'Substring', 1, 3 ) FROM dual;
 - PostgreSQL - SELECT SUBSTRING ('Substring', 1, 3);
+
+**Tamanho da String**
+- SQL Server - SELECT LEN('abc')
+- MySQL      - SELECT LENGTH('abc')
+- Oracle     - SELECT LENGTH('abc') from dual;
+- PostgreSQL - SELECT char_length('abc');
