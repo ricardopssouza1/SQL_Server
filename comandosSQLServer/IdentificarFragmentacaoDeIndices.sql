@@ -1,15 +1,12 @@
-SELECT object_name(IPS.object_id) AS [TableName], 
-   SI.name AS [IndexName], 
-   IPS.Index_type_desc, 
-   IPS.avg_fragmentation_in_percent, 
-   IPS.avg_fragment_size_in_pages, 
-   IPS.avg_page_space_used_in_percent, 
-   IPS.record_count, 
-   IPS.ghost_record_count,
-   IPS.fragment_count, 
-   IPS.avg_fragment_size_in_pages
-FROM sys.dm_db_index_physical_stats(db_id(DB_NAME()), NULL, NULL, NULL , 'DETAILED') IPS
-   JOIN sys.tables ST WITH (nolock) ON IPS.object_id = ST.object_id
-   JOIN sys.indexes SI WITH (nolock) ON IPS.object_id = SI.object_id AND IPS.index_id = SI.index_id
-WHERE ST.is_ms_shipped = 0
-order by IPS.avg_fragment_size_in_pages desc
+ SELECT dbschemas.[name] as 'Schema',
+dbtables.[name] as 'Table',
+dbindexes.[name] as 'Index',
+indexstats.avg_fragmentation_in_percent,
+indexstats.page_count
+FROM sys.dm_db_index_physical_stats (DB_ID(), NULL, NULL, NULL, NULL) AS indexstats
+INNER JOIN sys.tables dbtables on dbtables.[object_id] = indexstats.[object_id]
+INNER JOIN sys.schemas dbschemas on dbtables.[schema_id] = dbschemas.[schema_id]
+INNER JOIN sys.indexes AS dbindexes ON dbindexes.[object_id] = indexstats.[object_id]
+AND indexstats.index_id = dbindexes.index_id
+WHERE indexstats.database_id = DB_ID()
+ORDER BY indexstats.avg_fragmentation_in_percent desc
