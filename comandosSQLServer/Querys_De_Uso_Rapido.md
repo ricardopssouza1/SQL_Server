@@ -667,3 +667,16 @@ WHERE cast(Run_Date + ' ' + right('00' + substring(Run_time, (len(Run_time) - 5)
 	AND Step_Id = 0 <br />
 	AND Run_Status <> 1 <br />
 ORDER BY Dt_Execucao <br />
+
+
+**Listando as quantidades de linhas de todas as tabelas**
+<p>  select CONVERT(VARCHAR(255),a.name) as nmTabela <br />
+          , b.rows as qtd_registros <br />
+	      , DB_NAME() as nmBanco <br />
+       from sys.sysobjects a <br />
+ inner join sys.sysindexes b on a.id = b.id <br />
+      where 1=1<br />
+        and a.type = 'u' <br />
+	    and b.indid < 2<br />
+   order by CONVERT(VARCHAR(255),a.name) asc <br />
+</p>
