@@ -680,3 +680,26 @@ ORDER BY Dt_Execucao <br />
 	    and b.indid < 2<br />
    order by CONVERT(VARCHAR(255),a.name) asc <br />
 </p>
+
+
+**Identificar usuários conectados na instância**
+<p> SELECT  <br />
+    session_id, <br />
+    login_time, <br />
+    host_name, <br />
+    program_name, <br />
+    client_interface_name, <br />
+    login_name, <br />
+    status, <br />
+    cpu_time, <br />
+    memory_usage, <br />
+    last_request_start_time, <br />
+    last_request_end_time, <br />
+    transaction_isolation_level, <br />
+    lock_timeout, <br />
+    deadlock_priority <br />
+FROM  <br />
+    sys.dm_exec_sessions  <br />
+WHERE  <br />
+    login_name NOT IN ('sa', 'AUTORIDADE NT\SISTEMA', 'NT AUTHORITY\SYSTEM')  <br />
+</p>
